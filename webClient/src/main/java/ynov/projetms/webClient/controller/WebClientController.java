@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 
 import ynov.projectms.webClient.repository.ArticleProxy;
 import ynov.projectms.webClient.repository.CategoryProxy;
+import ynov.projectms.webClient.repository.CommentProxy;
 import ynov.projectms.webClient.repository.UserProxy;
 
 @Controller
