@@ -7,7 +7,7 @@ CREATE TABLE users (
   password VARCHAR(50) NOT NULL
 );
 
-INSERT INTO comments (on_article_id, post_date, content) VALUES
+INSERT INTO users (name, mail, password) VALUES
   ('Julien','julien@mail.fr', 'JulienMDP'),
   ('Lilian', 'lilian@mail.fr', 'LilianMDP'),
   ('Rafael', 'rafael@mail.fr' , 'RafaelMDP');
