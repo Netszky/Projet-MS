@@ -8,11 +8,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import ynov.projetms.article.model.Category;
 
 import ynov.projetms.article.repositories.CategoryRepository;
 
+@RestController
 public class RestCategoryController {
 	@Autowired
 	private CategoryRepository categoryRepository;
