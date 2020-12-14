@@ -9,11 +9,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -34,8 +34,9 @@ public class Article {
 	
 	/*@Transient
 	private Collection<Comment> comments;*/
-	
-	@Column(name="id_category")
+	@OneToMany
+	@JoinColumn(name = "id_category", referencedColumnName = "id_category", nullable = false)
+	@NotNull
 	private Integer id_category;
 	
 	@Column(name="id_user")
