@@ -8,6 +8,16 @@ CREATE TABLE articles (
   id_user INT NOT NULL
   
 );
+
+CREATE TABLE category (
+  id_category INT AUTO_INCREMENT  PRIMARY KEY,
+  name VARCHAR(250) NOT NULL
+);
+
+INSERT INTO category (name) VALUES
+  ('Sport'),
+  ('Politique'),
+  ('Troll');
  
 ALTER TABLE articles 
 ALTER COLUMN date_article SET DEFAULT CURRENT_TIMESTAMP;
