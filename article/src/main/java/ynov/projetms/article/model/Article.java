@@ -3,20 +3,17 @@ package ynov.projetms.article.model;
 import java.sql.Date;
 import java.util.Collection;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -28,7 +25,6 @@ public class Article {
 	@Column(name="id")
 	private Integer id;
 	
-	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="date_article")
 	@CreationTimestamp
 	private Date date;
@@ -36,17 +32,13 @@ public class Article {
 	@Column(name="content")
 	private String content;
 	
-	@OneToMany(mappedBy = "articles", cascade = CascadeType.REMOVE)
-	private Collection<Comment> comments;
+	/*@Transient
+	private Collection<Comment> comments;*/
 	
-	@OneToOne
-	@JoinColumn(name="id_category", referencedColumnName = "id_category", nullable = false)
-	@NotNull
+	@Column(name="id_category")
 	private Integer id_category;
 	
-	@ManyToOne
-	@JoinColumn(name="user_id", referencedColumnName = "user_id", nullable = false)
-	@NotNull
+	@Column(name="id_user")
 	private Integer id_user;
 
 	public Integer getId() {
@@ -88,12 +80,12 @@ public class Article {
 	public void setId_user(Integer id_user) {
 		this.id_user = id_user;
 	}
-	public Collection<Comment> getComments() {
+	/*public Collection<Comment> getComments() {
 		return comments;
 	}
 
 	public void setComments(Collection<Comment> comments) {
 		this.comments = comments;
 	}
-	
+	*/
 }
