@@ -34,7 +34,6 @@ public class Article {
 	
 	/*@Transient
 	private Collection<Comment> comments;*/
-	@OneToMany
 	@JoinColumn(name = "id_category", referencedColumnName = "id_category", nullable = false)
 	@NotNull
 	private Integer id_category;
