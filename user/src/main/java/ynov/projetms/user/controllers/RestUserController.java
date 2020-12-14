@@ -20,6 +20,12 @@ public class RestUserController {
 	@Autowired
 	private UserRepository userRepository;
 	
+	@GetMapping("/allUser")
+	public Iterable<User> getUsers() {		
+		Iterable<User> users = userRepository.findAll();
+		return users;		
+	}
+	
 	@GetMapping("/profil/{id}")
 	public Optional<User> getUser(@PathVariable("id") int id) 
 			throws InterruptedException {
