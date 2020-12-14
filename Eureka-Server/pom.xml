@@ -15,7 +15,7 @@
 	<description>Server for Project-ms</description>
 
 	<properties>
-		<java.version>8</java.version>
+		<java.version>1.8</java.version>
 		<spring-boot-admin.version>2.3.1</spring-boot-admin.version>
 		<spring-cloud.version>2020.0.0-M6</spring-cloud.version>
 	</properties>
