@@ -1,6 +1,6 @@
 package ynov.projetms.article.repositories;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
@@ -8,6 +8,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
+
 
 import ynov.projetms.article.config.CustomProperties;
 import ynov.projetms.article.dto.Comment;
@@ -19,13 +20,14 @@ public class CommentProxy {
 	@Autowired
 	private CustomProperties props;
 	
-	public Collection<Comment> getComment(int id) {
+	public List<Comment> getComment(int id) {
 		String getCommentUrl = props.getApiUrl() + "/comment/article/" + id;
-		ResponseEntity<Comment> response = restTemplate.exchange(
+		ResponseEntity<List<Comment>> response = restTemplate.exchange(
 				getCommentUrl, 
 				HttpMethod.GET, 
 				null, 
-			    Collection<Comment.class>;
-		return response.getBody();
+			    new ParameterizedTypeReference <List<Comment>>() {});
+		List<Comment> comments =  response.getBody();
+		return comments;
 	}
 }
