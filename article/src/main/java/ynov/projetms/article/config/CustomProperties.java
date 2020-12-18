@@ -4,7 +4,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ConfigurationProperties(prefix= "ynov.projetms")
+@ConfigurationProperties(prefix = "ynov.projetms")
 public class CustomProperties {
 	private String apiUrl;
 

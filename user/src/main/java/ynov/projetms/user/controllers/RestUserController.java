@@ -26,7 +26,7 @@ public class RestUserController {
 		return users;		
 	}
 	
-	@GetMapping("/profil/{id}")
+	@GetMapping("/user/{id}")
 	public Optional<User> getUser(@PathVariable("id") int id) 
 			throws InterruptedException {
 		Optional<User> user = userRepository.findById(id);

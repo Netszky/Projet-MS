@@ -21,9 +21,11 @@ public class ArticleTransformer {
 		articleR.setContent(a.getContent());
 		articleR.setDate(a.getDate());
 		articleR.setId_category(a.getId_category());
-		
+		//Comment comment = commentProxy.getComment(a.getComment());
+		//articleR.setComment(comment);
 		User user = userProxy.getUser(a.getId());
 		articleR.setUser(user);
+		
 		return articleR;
 	}
 }
