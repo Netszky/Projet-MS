@@ -1,5 +1,7 @@
 package ynov.projetms.article.dto;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -21,8 +23,8 @@ public class ArticleTransformer {
 		articleR.setContent(a.getContent());
 		articleR.setDate(a.getDate());
 		articleR.setId_category(a.getId_category());
-		//Comment comment = commentProxy.getComment(a.getComment());
-		//articleR.setComment(comment);
+		Collection<Comment> comment  = (Collection<Comment>) commentProxy.getComment(a.getId());
+		articleR.setComments(comment);
 		User user = userProxy.getUser(a.getId());
 		articleR.setUser(user);
 		

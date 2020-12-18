@@ -30,8 +30,6 @@ public class Article {
 	@Column(name="content")
 	private String content;
 	
-	/*@Transient
-	private Collection<Comment> comments;*/
 	@JoinColumn(name = "id_category", referencedColumnName = "id_category", nullable = false)
 	@NotNull
 	private Integer id_category;
