@@ -42,7 +42,7 @@ public class WebClientController {
 	public String getHomePage(@PathVariable int id, Model model) {
 		Article article = articleProxy.getArticle(id);
 		model.addAttribute("article", article);
-		return "homePage.html";
+		return "homePage";
 	}
 	
 	@GetMapping("/createPost")
