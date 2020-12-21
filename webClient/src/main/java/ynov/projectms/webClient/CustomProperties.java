@@ -7,15 +7,15 @@ import org.springframework.context.annotation.Configuration;
 @ConfigurationProperties(prefix = "ynov.projetms")
 public class CustomProperties {
 		
-		private String apiUrl;
+	private String apiUrl;
 
-		public String getApiUrl() {
-			return apiUrl;
-		}
-
-		public void setApiUrl(String apiUrl) {
-			this.apiUrl = apiUrl;
-		}	
-		
+	public String getApiUrl() {
+		return apiUrl;
 	}
+
+	public void setApiUrl(String apiUrl) {
+		this.apiUrl = apiUrl;
+	}	
+		
+}
 
