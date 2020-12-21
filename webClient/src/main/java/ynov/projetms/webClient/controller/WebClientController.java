@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import ynov.projectms.webClient.model.Article;
-import ynov.projectms.webClient.model.Comment;
-import ynov.projectms.webClient.repository.ArticleProxy;
-import ynov.projectms.webClient.repository.CategoryProxy;
-import ynov.projectms.webClient.repository.CommentProxy;
-import ynov.projectms.webClient.repository.UserProxy;
+import ynov.projetms.webClient.model.Article;
+import ynov.projetms.webClient.model.Comment;
+import ynov.projetms.webClient.repository.ArticleProxy;
+import ynov.projetms.webClient.repository.CategoryProxy;
+import ynov.projetms.webClient.repository.CommentProxy;
+import ynov.projetms.webClient.repository.UserProxy;
 
 @Controller
 public class WebClientController {

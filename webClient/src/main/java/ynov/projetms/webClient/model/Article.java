@@ -1,4 +1,4 @@
-package ynov.projectms.webClient.model;
+package ynov.projetms.webClient.model;
 
 import java.sql.Date;
 

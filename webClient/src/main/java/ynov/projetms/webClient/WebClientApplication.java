@@ -1,4 +1,4 @@
-package ynov.projectms.webClient;
+package ynov.projetms.webClient;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

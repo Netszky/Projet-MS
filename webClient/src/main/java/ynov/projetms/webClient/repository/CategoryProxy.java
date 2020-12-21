@@ -1,4 +1,4 @@
-package ynov.projectms.webClient.repository;
+package ynov.projetms.webClient.repository;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +8,8 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
-import ynov.projectms.webClient.CustomProperties;
-import ynov.projectms.webClient.model.Category;
+import ynov.projetms.webClient.CustomProperties;
+import ynov.projetms.webClient.model.Category;
 
 
 @Repository
