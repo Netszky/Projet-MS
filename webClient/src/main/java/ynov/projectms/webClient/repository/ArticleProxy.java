@@ -4,11 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Repository;
 import org.springframework.http.HttpEntity;
 
 import ynov.projectms.webClient.CustomProperties;
 import ynov.projectms.webClient.model.Article;
 
+@Repository
 public class ArticleProxy extends GenericProxy {
 	
 	@Autowired

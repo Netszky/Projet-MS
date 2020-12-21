@@ -5,10 +5,12 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Repository;
 
 import ynov.projectms.webClient.CustomProperties;
 import ynov.projectms.webClient.model.Comment;
 
+@Repository
 public class CommentProxy extends GenericProxy{
 	@Autowired
 	private CustomProperties props;

@@ -3,6 +3,7 @@ package ynov.projectms.webClient.model;
 import java.sql.Date;
 
 public class Article {
+	
 	private Integer id;
 	
 	private Date date;
