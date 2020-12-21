@@ -11,7 +11,16 @@ public class Article {
 	
 	private String category;
 	
-	private Integer id_user;
+	private User user;
+	
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	public Integer getId() {
 		return id;
@@ -43,15 +52,6 @@ public class Article {
 
 	public void setCategory(String category) {
 		this.category = category;
-	}
-
-	public Integer getId_user() {
-		return id_user;
-	}
-
-	public void setId_user(Integer id_user) {
-		this.id_user = id_user;
-	}
-	
+	}	
 	
 }
