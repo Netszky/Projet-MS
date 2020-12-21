@@ -10,8 +10,8 @@ xmlns:th="http://www.thymeleaf.org">
 	<div class="container">
   		<div class="row">
     		<!-- <--<div th:each="article: ${articles}" class="col-sm">-->
-      			<h1 th:text="{article.user.name}"></h1>
-      			<p th:text="{article.content}"></p>
+      			<h1 th:text="${article.user.name}"></h1>
+      			<p th:text="${article.content}"></p>
     		<!-- </div> -->
     	</div>
     </div>
