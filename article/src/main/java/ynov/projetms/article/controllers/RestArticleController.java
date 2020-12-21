@@ -40,4 +40,8 @@ public class RestArticleController {
 	public void deleteArticle(@PathVariable("id") int id) {
 		articleRepository.deleteById(id);
 	}
+	@GetMapping("/article/category/{id}")
+	public Iterable<ArticleR> getArticleByCategory(@PathVariable("id") int id){
+		return articleService.getByCategory(id);
+	}
 }

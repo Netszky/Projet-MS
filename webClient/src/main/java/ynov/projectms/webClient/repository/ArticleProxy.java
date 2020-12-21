@@ -69,5 +69,15 @@ public class ArticleProxy extends GenericProxy {
 		System.out.println(response.getStatusCode().toString());
 		
 	}
+	
+	public Iterable<Article> getArticleByCategorie(int id){
+		String getArticleUrl = props.getApiUrl() + "/article/category" + id;
+		ResponseEntity<Iterable<Article>> response = restTemplate.exchange(
+				getArticleUrl, 
+				HttpMethod.GET, 
+				null, 
+				new ParameterizedTypeReference<Iterable<Article>>() {});
+		return response.getBody();
+	}
 }
 

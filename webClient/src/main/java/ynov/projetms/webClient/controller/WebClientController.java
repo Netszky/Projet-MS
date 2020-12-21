@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ynov.projectms.webClient.model.Article;
+import ynov.projectms.webClient.model.Comment;
 import ynov.projectms.webClient.repository.ArticleProxy;
 import ynov.projectms.webClient.repository.CategoryProxy;
 import ynov.projectms.webClient.repository.CommentProxy;
@@ -70,5 +71,22 @@ public class WebClientController {
 		Article article = articleProxy.getArticle(id);
 		model.addAttribute("article", article);
 		return "formUpdateArticle";
+	}
+	@GetMapping("/addComment/{id}")
+	public String createComment(Model model) {
+		Comment comment = new Comment();
+		model.addAttribute("comment", comment);
+		return "formComment";
+	}
+	@PostMapping("/saveComment")
+	public ModelAndView saveComment(@ModelAttribute Comment comment) {
+		if(comment.getId() == null) {
+			commentProxy.createComment(comment);
+		}
+		else {
+			commentProxy.updateComment(comment);
+		}
+		return new ModelAndView("redirect:/");
+	
 	}
 }

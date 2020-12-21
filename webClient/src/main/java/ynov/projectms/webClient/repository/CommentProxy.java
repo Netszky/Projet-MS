@@ -25,7 +25,7 @@ public class CommentProxy extends GenericProxy{
 			return response.getBody();
 	}
 	
-	public Iterable<Comment> getArticles(){
+	public Iterable<Comment> getComments(){
 		String getArticleUrl = props.getApiUrl() + "/comment";
 		ResponseEntity<Iterable<Comment>> response = restTemplate.exchange(
 				getArticleUrl, 
@@ -36,7 +36,7 @@ public class CommentProxy extends GenericProxy{
 	}
 	
 	public Comment createComment(Comment comment) {
-		String createArticleUrl = props.getApiUrl() + "/article";
+		String createArticleUrl = props.getApiUrl() + "/comment";
 		
 		HttpEntity<Comment> requestEntity = new HttpEntity<Comment>(comment);
 		ResponseEntity<Comment> response = restTemplate.exchange(
