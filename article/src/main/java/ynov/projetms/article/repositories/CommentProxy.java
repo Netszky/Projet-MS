@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 
 
 import ynov.projetms.article.config.CustomProperties;
-import ynov.projetms.article.dto.Comment;
+import ynov.projetms.article.model.Comment;
 
 @Repository
 public class CommentProxy {

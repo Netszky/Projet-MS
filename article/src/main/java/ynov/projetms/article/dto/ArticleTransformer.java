@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import ynov.projetms.article.model.Article;
+import ynov.projetms.article.model.Comment;
+import ynov.projetms.article.model.User;
 import ynov.projetms.article.repositories.CommentProxy;
 import ynov.projetms.article.repositories.UserProxy;
 
@@ -14,7 +16,7 @@ public class ArticleTransformer {
 	@Autowired
 	private UserProxy userProxy;
 	@Autowired
-	CommentProxy commentProxy;
+	private CommentProxy commentProxy;
 	
 	public ArticleR transform(Article a) {
 		ArticleR articleR = new ArticleR();
@@ -25,7 +27,7 @@ public class ArticleTransformer {
 		articleR.setId_category(a.getId_category());
 		Collection<Comment> comment  = (Collection<Comment>) commentProxy.getComment(a.getId());
 		articleR.setComments(comment);
-		User user = userProxy.getUser(a.getId());
+		User user = userProxy.getUser(a.getId_user());
 		articleR.setUser(user);
 		
 		return articleR;

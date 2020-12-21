@@ -1,4 +1,4 @@
-package ynov.projetms.article.dto;
+package ynov.projetms.article.model;
 
 public class User {
 		

@@ -3,6 +3,9 @@ package ynov.projetms.article.dto;
 import java.util.Collection;
 import java.util.Date;
 
+import ynov.projetms.article.model.Comment;
+import ynov.projetms.article.model.User;
+
 public class ArticleR {
 
 	private Integer id;

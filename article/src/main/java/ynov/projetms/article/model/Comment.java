@@ -1,4 +1,4 @@
-package ynov.projetms.article.dto;
+package ynov.projetms.article.model;
 
 import java.sql.Date;
 
@@ -7,6 +7,14 @@ public class Comment {
 	private Integer on_article_id;
 	private Date post_date;
 	private String content;
+	private User user;
+	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	public Integer getId() {
 		return id;
 	}

@@ -1,7 +1,6 @@
 package ynov.projetms.article.model;
 
 import java.sql.Date;
-import java.util.Collection;
 
 
 import javax.persistence.Column;

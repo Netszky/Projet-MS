@@ -28,7 +28,7 @@ public class RestArticleController {
 		return articleService.getArticles();
 	}
 	@GetMapping("/article/{id}")
-	public ArticleR getArticle(@PathVariable int id) {
+	public ArticleR getArticle(@PathVariable("id") int id) {
 		return articleService.getArticle(id);
 	}
 	@PostMapping("/article")
