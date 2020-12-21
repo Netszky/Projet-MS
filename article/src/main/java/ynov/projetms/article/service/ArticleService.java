@@ -39,4 +39,17 @@ public class ArticleService {
 		}
 		return articleRs;
 	}
+	
+	public Iterable<ArticleR> getByCategory(int id){
+		Iterable<Article> articles = articleRepository.findaAllByCategoryId(id);
+		ArrayList<ArticleR> articleRs = new ArrayList<ArticleR>();
+		
+		Iterator<Article> iterator = articles.iterator();
+		while(iterator.hasNext()) {
+			Article a = iterator.next();
+			ArticleR articleR = articleTransformer.transform(a);
+			articleRs.add(articleR);
+		}
+		return articleRs;
+	}
 }
