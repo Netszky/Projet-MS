@@ -31,7 +31,7 @@ public class WebClientController {
 	@Autowired 
 	private CommentProxy commentProxy;
 	
-	@GetMapping("/")
+	@GetMapping("/home")
 	public String getHomePage(Model model) {
 		Iterable<Article> articles = articleProxy.getArticles();
 		model.addAttribute("articles", articles);
