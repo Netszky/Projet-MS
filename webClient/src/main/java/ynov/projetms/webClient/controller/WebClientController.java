@@ -38,11 +38,11 @@ public class WebClientController {
 		return "homePage";
 	}
 	
-	@GetMapping("/home/{id}")
+	@GetMapping("/article/{id}")
 	public String getHomePage(@PathVariable int id, Model model) {
 		Article article = articleProxy.getArticle(id);
 		model.addAttribute("article", article);
-		return "homePage";
+		return "articlePage";
 	}
 	
 	@GetMapping("/createPost")

@@ -9,13 +9,9 @@ xmlns:th="http://www.thymeleaf.org">
 <body>
 	<div class="container">
   		<div class="row">
-    		<div th:each="article: ${articles}" class="col-sm">
-    			<a th:href="@{/article/{id}(id=${article.id})}">
-      				<h1 th:text="${article.user.name}"></h1>
-      				<p th:text="${article.content}"></p>
-      			</a>
-      			<a th:href="@{/deleteArticle/{id}(id=${article.id})}">Delete</a>
-    		</div> 
+   			<h1 th:text="${article.user.name}"></h1>
+   			<p th:text="${article.content}"></p>
+   			<a th:href="@{/deleteArticle/{id}(id=${article.id})}">Delete</a>
     	</div>
     </div>
 </body>
