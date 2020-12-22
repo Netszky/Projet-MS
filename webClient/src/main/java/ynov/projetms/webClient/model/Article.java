@@ -10,6 +10,8 @@ public class Article {
 	
 	private String content;
 	
+	private String title;
+	
 	private String category;
 	
 	private User user;
@@ -53,6 +55,16 @@ public class Article {
 
 	public void setCategory(String category) {
 		this.category = category;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}	
+	
+	
 	
 }
