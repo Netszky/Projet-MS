@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ynov.projetms.webClient.model.Article;
 import ynov.projetms.webClient.model.Category;
 import ynov.projetms.webClient.model.Comment;
+import ynov.projetms.webClient.model.User;
 import ynov.projetms.webClient.repository.ArticleProxy;
 import ynov.projetms.webClient.repository.CategoryProxy;
 import ynov.projetms.webClient.repository.CommentProxy;
@@ -73,12 +74,12 @@ public class WebClientController {
 			else {
 				articleProxy.updateArticle(article);
 			}
-			return new ModelAndView("redirect:/");
+			return new ModelAndView("redirect:/home");
 	}
 	@GetMapping("/deleteArticle/{id}")
 	public ModelAndView deleteArticle(@PathVariable int id) {
 		articleProxy.deleteArticle(id);
-		return new ModelAndView("redirect:/");
+		return new ModelAndView("redirect:/home");
 	}
 	@GetMapping("/updateArticle/{id}")
 	public String updateArticle(@PathVariable int id, Model model) {
@@ -100,7 +101,23 @@ public class WebClientController {
 		else {
 			commentProxy.updateComment(comment);
 		}
-		return new ModelAndView("redirect:/");
+		return new ModelAndView("redirect:/home");
 	
 	}
-}
+	@GetMapping("/register")
+	public String createUser(Model model) {
+		User user = new User();
+		model.addAttribute("user", user);
+		return "formUser";
+	}
+	@PostMapping("/saveUser")
+		public ModelAndView saveuser(@ModelAttribute User user) {
+			if(user.getId() == null) {
+				userProxy.createUser(user);
+			}
+			else {
+				userProxy.updateUser(user);
+			}
+			return new ModelAndView("redirect:/home");
+		}
+	}
