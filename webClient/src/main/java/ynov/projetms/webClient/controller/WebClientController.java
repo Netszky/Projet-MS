@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ynov.projetms.webClient.model.Article;
+import ynov.projetms.webClient.model.Category;
 import ynov.projetms.webClient.model.Comment;
 import ynov.projetms.webClient.repository.ArticleProxy;
 import ynov.projetms.webClient.repository.CategoryProxy;
@@ -50,6 +51,18 @@ public class WebClientController {
 		Article article = new Article();
 		model.addAttribute("article", article);
 		return "formCreatePost";
+	}
+	@GetMapping("/category")
+	public String getCategoryPage(Model model) {
+		Iterable<Category> categories = categoryProxy.getCategories();
+		model.addAttribute("categories", categories);
+		return "categoryPage";
+	}
+	@GetMapping("/category/{id}")
+	public String getArticleByCategory(@PathVariable int id, Model model) {
+		Iterable<Article> articles = articleProxy.getArticleByCategorie(id);
+		model.addAttribute("articles", articles);
+		return "articleCategory";
 	}
 	
 	@PostMapping("/savePost")
