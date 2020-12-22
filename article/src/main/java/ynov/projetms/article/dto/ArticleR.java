@@ -14,6 +14,8 @@ public class ArticleR {
 	
 	private String content;
 	
+	private String title;
+	
 	private Integer id_category;
 	
 	private User user;
@@ -55,6 +57,12 @@ public class ArticleR {
 	}
 	public void setComments(Collection<Comment> comments) {
 		this.comments = comments;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	
 	
