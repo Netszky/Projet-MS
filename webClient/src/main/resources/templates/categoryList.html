@@ -5,7 +5,7 @@
 
 	<head>
 		<meta charset="UTF-8">
-		<title>Publish a new article</title>
+		<title>List all available categories</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -27,26 +27,16 @@
 			</header>
 
 			<div class="main container">
-				<form method="post" th:action="@{/savePost}" th:object="${article}">
-					<select class="form-select" aria-label="Category" th:field="*{id_category}">
-					  <option th:each="category : ${categories}"
-					  	th:value="${category.id}"
-					  	th:utext="${category.name}">
-				  	</option>
-					</select>
-					<select class="form-select" aria-label="User" th:field="*{id_user}">
-					  <option th:each="user : ${users}"
-					  	th:value="${user.id}"
-					  	th:utext="${user.name}">
-					  	</option>
-					</select>
-					<label for="titleInput" class="form-label">Title</label>
-					<input type="text" th:field="*{title}" id="titleInput" class="form-control"/>
-					<label for="contentInput" class="form-label">Content</label>
-					<input type="text" th:field="*{content}" id="contentInput" class="form-control"/>
-					<input type="submit" value="Submit" />
-				</form>
+				<div class="row">
+		  		<div th:each="category: ${categories}" class="col-sm">
+						<a href="@{/category/{id}(id=${category.id})}" th:text="${category.name}"></a>
+		  		</div>
+		  	</div>
+		  </div>
+			<div class="row">
+				<h1><a href="formCreateCategory.html">Add a new category</a></h1>
 			</div>
+
 
 			<section id="footer">
 				<ul class="icons">

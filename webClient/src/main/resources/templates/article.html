@@ -1,68 +1,104 @@
 <!DOCTYPE html>
+
 <html xmlns="http://www.w3org/1999/xhml"
-xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-<title>Home</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-</head>
-<body>
-	<ul class="nav justify-content-center">
-	  <li class="nav-item">
-	    <a class="nav-link active" aria-current="page" href="/home">Accueil</a>
-	  </li>
-	  <li class="nav-item">
-	    <a class="nav-link" href="/article/new">Nouvel article</a>
-	  </li>
-	  <li class="nav-item">
-	    <a class="nav-link" href="/category/new">Nouvelle catégorie</a>
-	  </li>
-	  <li class="nav-item">
-	    <a class="nav-link" href="/user/new">Nouvel utilisateur</a>
-	  </li>
-	</ul>
-	<div class="container">
-  		<div class="row">
-  			<p>Ecrit par <span th:text="${article.user.name}"></span> le <span th:text="${article.date}"></span></p>
-  			<p th:text="${article.content}"></p>
-    	</div>
-    </div>
-    <div class="container">
-	   	<div class="row">
-	   		<h2>Commentaires</h2> <br>
-	   		<div class="col-sm">
-	   			<form method="post" th:action="@{/saveComment}" th:object="${newComment}">
-	   			
-		   			<select class="form-select" aria-label="User" th:field="*{user_id}">
-					  <option th:each="user : ${users}"
-					  	th:value="${user.id}"
-					  	th:utext="${user.name}">
-				  	</option>
-					</select>
-					
-					<select class="form-select" aria-label="User" th:field="*{on_article_id}" style="visibility: hidden;">
-					  	<option
-					  		th:value="${article.id}"
-				  		</option>
-					</select>
-	   			
-		   			<label for="contentInput" class="form-label">Votre commentaire :</label>
-					<input type="text" th:field="*{content}" id="contentInput" class="form-control"/>
-				
-					<input type="submit" value="Validate" />
-				</form>
-	   		</div>
-	   	</div>
-	   	<br>	
-   		<div class="row">
-		
-			<div th:each="comment: ${comments}" class="col-sm">
-	  			<h3> 
-	  				<span th:text="${comment.user.name}"></span> - <span th:text="${comment.post_date}"></span>
-	  			</h3>
-	  			<p th:text="${comment.content}"></p>
-			</div> 
+	xmlns:th="http://www.thymeleaf.org" lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>${article.title}</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+
+	<body class="single is-preload">
+
+		<div id="wrapper">
+
+			<header id="header">
+				<h1><a href="@{/categoryList}">Super blog</a></h1>
+				<nav class="links">
+					<ul>
+						<li><a href="homePage.html">Most recent posts</a></li>
+						<li><a href="userList.html">User list</a></li>
+						<li><a href="categoryList.html">Available categories</a></li>
+					</ul>
+				</nav>
+			</header>
+
+			<div class="main container">
+				<article class="post">
+					<header>
+						<div class="title">
+							<h2 th:text="${article.title}"></h2>
+							<!--<p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p>-->
+						</div>
+						<div class="meta">
+							<time class="published" datetime="${article.date}" th:text="${article.date}"></time>
+							<a class="author"><span class="name" th:text="${article.user.name}"></span><img src="images/avatar.jpg" alt="" /></a>
+						</div>
+					</header>
+					<span class="image featured"><img src="images/${article.id}.jpg" alt="" /></span>
+					<p th:text="${article.content}"></p>
+					<footer>
+						<ul class="stats">
+							<li><a href="#">General</a></li>
+							<!--<li><a href="#" class="icon solid fa-comment">128</a></li>-->
+						</ul>
+					</footer>
+					<a th:href="@{/deleteArticle/{id}(id=${article.id})}">Delete</a> - <a th:href="@{/updateArticle/{id}(id=${article.id})}">Update</a>
+				</article>
+
+
+				<div class="row">
+					<div class="col-sm">
+						<form method="post" th:action="@{/saveComment}" th:object="${newComment}">
+							<select class="form-select" aria-label="User" th:field="*{user_id}">
+								<option th:each="user: ${users}"
+									th:value="${user.id}"
+									th:utext="${user.name}">
+								</option>
+							</select>
+							<label for="contentInput" class="form-label">Your comment:</label>
+							<input type="text" th:field="*{content}" id="contentInput" class="form-control"/>
+							<select class="form-select" aria-label="User" th:field="*{on_article_id}" style="visibility: hidden;">
+						  	<option
+						  		th:value="${article.id}"
+					  		</option>
+							</select>
+							<input type="submit" value="Submit" />
+						</form>
+					</div>
+				</div>
+
+				<div th:each="comment: ${comments}" class="col-sm">
+					<article class="post">
+						<header>
+							<div class="meta">
+								<time class="published" datetime="${article.post_date}" th:text=${article.post_date}></time>
+								<a href="#" class="author"><span class="name" th:text="${comment.user.name}"></span><img src="images/avatar.jpg" alt="" /></a>
+							</div>
+						</header>
+		  			<p th:text="${comment.content}"></p>
+					</article>
+				</div>
+
+			</div>
+
+			<section id="footer">
+				<ul class="icons">
+					<li><a target="_blank" href="https://github.com/Netszky/Projet-MS" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+				</ul>
+				<p class="copyright">&copy; Super team. Design by <a href="http://html5up.net">HTML5 UP</a>.</p>
+			</section>
+
 		</div>
-	</div>
-</body>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+
+	</body>
 </html>
