@@ -20,7 +20,7 @@ public class RestUserController {
 	@Autowired
 	private UserRepository userRepository;
 	
-	@GetMapping("/allUser")
+	@GetMapping("/user")
 	public Iterable<User> getUsers() {		
 		Iterable<User> users = userRepository.findAll();
 		return users;		
@@ -32,18 +32,18 @@ public class RestUserController {
 		return user;
 	}
 	
-	@PostMapping("/sign_in")
+	@PostMapping("/user")
 	public User createUser(@RequestBody User user) {
 		user = userRepository.save(user);		
 		return user;
 	}
 	
-	@DeleteMapping("/profil/{id}")
+	@DeleteMapping("/user/profil/{id}")
 	public void deleteUser(@PathVariable("id") int id) {
 		userRepository.deleteById(id);
 	}
 	
-	@PutMapping("/profil/{id}")
+	@PutMapping("/user/profil/{id}")
 	public User updateUser(@PathVariable("id") int id, @RequestBody User user) {
 		User currentUser = userRepository.findById(id).get();	
 		
