@@ -51,7 +51,7 @@ public class WebClientController {
 		return "articlePage";
 	}
 	
-	@GetMapping("/sign_in")
+	@GetMapping("/register")
 	public String createUser(Model model) {
 		User user = new User();
 		model.addAttribute("user", user);
@@ -169,27 +169,8 @@ public class WebClientController {
 		model.addAttribute("comment", comment);
 		return "formComment";
 	}
-<<<<<<< HEAD
 	
-}
-=======
-	@PostMapping("/saveComment")
-	public ModelAndView saveComment(@ModelAttribute Comment comment) {
-		if(comment.getId() == null) {
-			commentProxy.createComment(comment);
-		}
-		else {
-			commentProxy.updateComment(comment);
-		}
-		return new ModelAndView("redirect:/home");
 	
-	}
-	@GetMapping("/register")
-	public String createUser(Model model) {
-		User user = new User();
-		model.addAttribute("user", user);
-		return "formUser";
-	}
 	@PostMapping("/saveUser")
 		public ModelAndView saveuser(@ModelAttribute User user) {
 			if(user.getId() == null) {
@@ -201,4 +182,3 @@ public class WebClientController {
 			return new ModelAndView("redirect:/home");
 		}
 	}
->>>>>>> 65df2babb0092ef4525e8aa60644759c08c8b849
