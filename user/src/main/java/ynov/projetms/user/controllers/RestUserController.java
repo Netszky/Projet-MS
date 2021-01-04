@@ -38,12 +38,12 @@ public class RestUserController {
 		return user;
 	}
 	
-	@DeleteMapping("/user/profil/{id}")
+	@DeleteMapping("/user/{id}")
 	public void deleteUser(@PathVariable("id") int id) {
 		userRepository.deleteById(id);
 	}
 	
-	@PutMapping("/user/profil/{id}")
+	@PutMapping("/user/{id}")
 	public User updateUser(@PathVariable("id") int id, @RequestBody User user) {
 		User currentUser = userRepository.findById(id).get();	
 		

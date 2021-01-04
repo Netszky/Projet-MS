@@ -40,7 +40,8 @@ public class Article {
 	@Column(name="content")
 	private String content;
 	
-	@Column(name="id_category")
+	@JoinColumn(name = "id_category", referencedColumnName = "id_category", nullable = false)
+    @NotNull
 	private Integer id_category;
 	
 	@Column(name="id_user")

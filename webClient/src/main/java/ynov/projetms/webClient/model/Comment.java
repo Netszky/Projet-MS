@@ -7,6 +7,8 @@ public class Comment {
 	
 	private Integer on_article_id;
 	
+	private Integer user_id;
+	
 	private Date post_date;
 	
 	private String content;
@@ -36,6 +38,14 @@ public class Comment {
 
 	public void setOn_article_id(Integer on_article_id) {
 		this.on_article_id = on_article_id;
+	}
+	
+	public Integer getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(Integer user_id) {
+		this.user_id = user_id;
 	}
 
 	public Date getPost_date() {

@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 @Entity
 @Table(name = "comments")
 public class Comment {
@@ -21,6 +23,7 @@ public class Comment {
 	private Integer on_article_id;
 	
 	@Column(name="post_date")
+	@CreationTimestamp
 	private Date post_date;
 	
 	@Column(name="content")

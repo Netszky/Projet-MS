@@ -22,4 +22,22 @@ public interface ArticleRepository extends CrudRepository<Article, Integer> {
 		return articleCategory;
 	}
 	
+	public default void deleteAllByCategory(int id) {
+        Iterable<Article> allArticles = this.findAll();
+        for (Article a: allArticles) {
+            if(a.getId_category().equals(id)) {
+                this.deleteById(id);
+            }
+        }
+    }
+	
+	public default void deleteAllByUser(int id) {
+        Iterable<Article> allArticles = this.findAll();
+        for (Article a: allArticles) {
+            if(a.getId_user().equals(id)) {
+                this.deleteById(id);
+            }
+        }
+    }
+	
 }
