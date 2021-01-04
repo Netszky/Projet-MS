@@ -22,14 +22,14 @@ xmlns:th="http://www.thymeleaf.org">
 	  </li>
 	</ul>
 	<p>
-  			<a th:href="@{/deleteCategory/{id}(id=${category.id})}">Delete</a> - <a th:href="@{/updateCategory/{id}(id=${category.id})}">Update</a>
-		</p>
+		<a th:href="@{/deleteCategory/{id}(id=${category.id})}">Delete</a> - <a th:href="@{/updateCategory/{id}(id=${category.id})}">Update</a>
+	</p>
 	<div class="container">
 		<h1 th:text="${category.name}"></h1>
   		<div class="row">
     		<div th:each="article: ${article}" class="col-sm">
       			<a th:href="@{/article/{id}(id=${article.id})}">
-      				<p th:text="${article.content}"></p>
+      				<p th:text="${article.title}"></p>
       			</a>
     		</div> 
     	</div>

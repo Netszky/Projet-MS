@@ -18,7 +18,7 @@ xmlns:th="http://www.thymeleaf.org">
 	    <a class="nav-link" href="/category/new">Nouvelle catégorie</a>
 	  </li>
 	  <li class="nav-item">
-	    <a class="nav-link" href="/user/new">Nouvel utilisateur</a>
+	    <a class="nav-link" href="/register">Nouvel utilisateur</a>
 	  </li>
 	</ul>
 	<div class="container">
@@ -34,7 +34,7 @@ xmlns:th="http://www.thymeleaf.org">
   			<h1>Tous les articles</h1>
     		<div th:each="article: ${articles}" class="col-sm">
       			<a th:href="@{/article/{id}(id=${article.id})}">
-      				<p th:text="${article.content}"></p>
+      				<p th:text="${article.title}"></p>
       			</a>
     		</div> 
     	</div>
