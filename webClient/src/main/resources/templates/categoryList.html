@@ -19,9 +19,9 @@
 				<h1><a href="@{/categoryList}">Super blog</a></h1>
 				<nav class="links">
 					<ul>
-						<li><a href="homePage.html">Most recent posts</a></li>
-						<li><a href="userList.html">User list</a></li>
-						<li><a href="categoryList.html">Available categories</a></li>
+						<li><a href="/home">Most recent posts</a></li>
+						<li><a href="/user">User list</a></li>
+						<li><a href="/category">Available categories</a></li>
 					</ul>
 				</nav>
 			</header>
@@ -29,12 +29,12 @@
 			<div class="main container">
 				<div class="row">
 		  		<div th:each="category: ${categories}" class="col-sm">
-						<a href="@{/category/{id}(id=${category.id})}" th:text="${category.name}"></a>
+						<a th:href="@{/category/{id}(id=${category.id})}" th:text="${category.name}"></a>
 		  		</div>
 		  	</div>
 		  </div>
 			<div class="row">
-				<h1><a href="formCreateCategory.html">Add a new category</a></h1>
+				<h1><a href="/category/new">Add a new category</a></h1>
 			</div>
 
 
