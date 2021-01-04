@@ -1,0 +1,36 @@
+version: '3'
+services:
+	build: EurekaServer/.
+	ports:
+		-'9200:9200'
+	build: articleapi/.
+	depends_on:
+		- EurekaServer
+	ports:
+		-'9005:9005'
+	build: webClient/.
+	depends_on:
+		- EurekaServer
+	ports:
+		-'9400:9400'
+	build: gateway/.
+	depends_on:
+		- EurekaServer
+	ports:
+		-'9201:9201'
+	build: ms-userapi/.
+	depends_on:
+		- EurekaServer
+	ports:
+		-'9007:9007'
+	build: bootAdmin/.
+	depends_on:
+		- EurekaServer
+	ports:
+		-'9202:9202'
+	build: commentapi/.
+	depends_on:
+		- EurekaServer
+	ports:
+		-'9006:9006'
+

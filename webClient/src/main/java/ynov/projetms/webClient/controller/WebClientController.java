@@ -134,7 +134,14 @@ public class WebClientController {
 	public String getCategoryPage(Model model) {
 		Iterable<Category> categories = categoryProxy.getCategories();
 		model.addAttribute("categories", categories);
-		return "categoryPage";
+		return "categoryList";
+	}
+	
+	@GetMapping("/user")
+	public String getUserPage(Model model) {
+		Iterable<User> users = userProxy.getUsers();
+		model.addAttribute("users", users);
+		return "userList";
 	}
 	
 	@PostMapping("/savePost")

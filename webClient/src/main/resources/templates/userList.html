@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3org/1999/xhml"
+	xmlns:th="http://www.thymeleaf.org" lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Home</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../../../assets/css/main.css" />
+	</head>
+
+	<body class="single is-preload">
+
+		<div id="wrapper">
+
+			<header id="header">
+				<h1><a href="/home">Super blog</a></h1>
+				<nav class="links">
+					<ul>
+						<li><a href="/home">Most recent posts</a></li>
+						<li><a href="/user">User list</a></li>
+						<li><a href="/category">Available categories</a></li>
+					</ul>
+				</nav>
+			</header>
+
+			<div class="main container">
+
+	  		<div class="row">
+	  			<h1>All users</h1>
+	    		<div th:each="user: ${users}" class="col-sm">
+      			<a th:href="@{/user/{id}(id=${user.id})}">
+      				<p th:text="${user.name}"></p>
+      			</a>
+	    		</div>
+	    	</div>
+				<br />
+				<div class="row">
+	  			<h1><a href="/register">Add a new user</a></h1>
+	    	</div>
+
+			<section id="footer">
+				<ul class="icons">
+					<li><a target="_blank" href="https://github.com/Netszky/Projet-MS" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+				</ul>
+				<p class="copyright">&copy; Super team. Design by <a href="http://html5up.net">HTML5 UP</a>.</p>
+			</section>
+
+		</div>
+
+		<script src="../../../assets/js/jquery.min.js"></script>
+		<script src="../../../assets/js/browser.min.js"></script>
+		<script src="../../../assets/js/breakpoints.min.js"></script>
+		<script src="../../../assets/js/util.js"></script>
+		<script src="../../../assets/js/main.js"></script>
+
+	</body>
+</html>
