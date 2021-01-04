@@ -26,6 +26,17 @@ public class Article {
 	@CreationTimestamp
 	private Date date;
 	
+	@Column(name="title")
+	private String title;
+	
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
 	@Column(name="content")
 	private String content;
 	

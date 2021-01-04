@@ -25,6 +25,7 @@ public class ArticleTransformer {
 		articleR.setContent(a.getContent());
 		articleR.setDate(a.getDate());
 		articleR.setId_category(a.getId_category());
+		articleR.setTitle(a.getTitle());
 		Collection<Comment> comment  = (Collection<Comment>) commentProxy.getComment(a.getId());
 		articleR.setComments(comment);
 		User user = userProxy.getUser(a.getId_user());

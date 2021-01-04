@@ -44,11 +44,11 @@ public class WebClientController {
 		return "homePage";
 	}
 	
-	@GetMapping("/home/{id}")
+	@GetMapping("/article/{id}")
 	public String getHomePage(@PathVariable int id, Model model) {
 		Article article = articleProxy.getArticle(id);
 		model.addAttribute("article", article);
-		return "homePage";
+		return "articlePage";
 	}
 	
 	@GetMapping("/sign_in")
@@ -128,6 +128,18 @@ public class WebClientController {
 		model.addAttribute("article", article);
 		return "formCreatePost";
 	}
+	@GetMapping("/category")
+	public String getCategoryPage(Model model) {
+		Iterable<Category> categories = categoryProxy.getCategories();
+		model.addAttribute("categories", categories);
+		return "categoryPage";
+	}
+	@GetMapping("/category/{id}")
+	public String getArticleByCategory(@PathVariable int id, Model model) {
+		Iterable<Article> articles = articleProxy.getArticleByCategorie(id);
+		model.addAttribute("articles", articles);
+		return "articleCategory";
+	}
 	
 	@PostMapping("/savePost")
 		public ModelAndView saveArticle(@ModelAttribute Article article) {
@@ -143,7 +155,7 @@ public class WebClientController {
 	@GetMapping("/deleteArticle/{id}")
 	public ModelAndView deleteArticle(@PathVariable int id) {
 		articleProxy.deleteArticle(id);
-		return new ModelAndView("redirect:/");
+		return new ModelAndView("redirect:/home");
 	}
 	@GetMapping("/updateArticle/{id}")
 	public String updateArticle(@PathVariable int id, Model model) {
@@ -157,5 +169,36 @@ public class WebClientController {
 		model.addAttribute("comment", comment);
 		return "formComment";
 	}
+<<<<<<< HEAD
 	
 }
+=======
+	@PostMapping("/saveComment")
+	public ModelAndView saveComment(@ModelAttribute Comment comment) {
+		if(comment.getId() == null) {
+			commentProxy.createComment(comment);
+		}
+		else {
+			commentProxy.updateComment(comment);
+		}
+		return new ModelAndView("redirect:/home");
+	
+	}
+	@GetMapping("/register")
+	public String createUser(Model model) {
+		User user = new User();
+		model.addAttribute("user", user);
+		return "formUser";
+	}
+	@PostMapping("/saveUser")
+		public ModelAndView saveuser(@ModelAttribute User user) {
+			if(user.getId() == null) {
+				userProxy.createUser(user);
+			}
+			else {
+				userProxy.updateUser(user);
+			}
+			return new ModelAndView("redirect:/home");
+		}
+	}
+>>>>>>> 65df2babb0092ef4525e8aa60644759c08c8b849
