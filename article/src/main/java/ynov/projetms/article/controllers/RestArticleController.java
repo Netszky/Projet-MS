@@ -44,4 +44,12 @@ public class RestArticleController {
 	public Iterable<ArticleR> getArticleByCategory(@PathVariable("id") int id){
 		return articleService.getByCategory(id);
 	}
+	@DeleteMapping("/article/category/{id}")
+    public void deleteCategory(@PathVariable("id") int id) {
+        articleRepository.deleteAllByCategory(id);
+    }
+	@DeleteMapping("/article/user/{id}")
+    public void deleteUser(@PathVariable("id") int id) {
+        articleRepository.deleteAllByUser(id);
+    }
 }

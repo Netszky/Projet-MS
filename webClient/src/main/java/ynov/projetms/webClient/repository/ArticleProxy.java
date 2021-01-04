@@ -80,4 +80,24 @@ public class ArticleProxy extends GenericProxy {
 				new ParameterizedTypeReference<Iterable<Article>>() {});
 		return response.getBody();
 	}
+	
+	public void deleteArticleByCategory(Integer id) {
+        String deleteArticleUrl = props.getApiUrl() + "/article/category/" + id;
+        ResponseEntity<Void> response = restTemplate.exchange(
+                deleteArticleUrl, 
+                HttpMethod.DELETE, 
+                null, 
+                Void.class);
+        System.out.println(response.getStatusCode().toString());
+    }
+	
+	public void deleteArticleByUser(Integer id) {
+        String deleteArticleUrl = props.getApiUrl() + "/article/user/" + id;
+        ResponseEntity<Void> response = restTemplate.exchange(
+                deleteArticleUrl, 
+                HttpMethod.DELETE, 
+                null, 
+                Void.class);
+        System.out.println(response.getStatusCode().toString());
+    }
 }

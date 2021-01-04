@@ -10,6 +10,8 @@ public class Article {
 	
 	private String content;
 	private Integer id_category;
+	private Integer id_user;
+
 	private String title;
 	
 	private String category;
@@ -49,16 +51,20 @@ public class Article {
 		this.content = content;
 	}
 
-	public Integer getCategory() {
+	public Integer getId_category() {
 		return id_category;
 	}
-	
-	public void setCategory(Integer id_category) {
+
+	public void setId_category(Integer id_category) {
 		this.id_category = id_category;
 	}
 	
-	public void setCategory(String category) {
-		this.category = category;
+	public Integer getId_user() {
+		return id_user;
+	}
+
+	public void setId_user(Integer id_user) {
+		this.id_user = id_user;
 	}
 
 	public String getTitle() {

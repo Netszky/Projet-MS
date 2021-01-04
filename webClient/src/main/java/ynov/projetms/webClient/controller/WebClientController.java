@@ -44,11 +44,11 @@ public class WebClientController {
 		return "homePage";
 	}
 	
-	@GetMapping("/article/{id}")
-	public String getHomePage(@PathVariable int id, Model model) {
-		Article article = articleProxy.getArticle(id);
-		model.addAttribute("article", article);
-		return "articlePage";
+	@GetMapping("/user/{id}")
+	public String getUser(@PathVariable int id, Model model) {
+		User user = userProxy.getUser(id);
+		model.addAttribute("user", user);
+		return "user";
 	}
 	
 	@GetMapping("/register")
@@ -67,7 +67,7 @@ public class WebClientController {
 			userProxy.updateUser(user);
 		}
 		return new ModelAndView("redirect:/home");
-}
+	}
 	
 	@GetMapping("/category/{id}")
 	public String getCategoryArticles(@PathVariable int id, Model model) {
@@ -104,6 +104,8 @@ public class WebClientController {
 		model.addAttribute("comments", comments);
 		Comment comment = new Comment();
 		model.addAttribute("newComment", comment);
+		Iterable<User> users = userProxy.getUsers();
+		model.addAttribute("users", users);
 		return "article";
 	}
 	
@@ -134,12 +136,6 @@ public class WebClientController {
 		model.addAttribute("categories", categories);
 		return "categoryPage";
 	}
-	@GetMapping("/category/{id}")
-	public String getArticleByCategory(@PathVariable int id, Model model) {
-		Iterable<Article> articles = articleProxy.getArticleByCategorie(id);
-		model.addAttribute("articles", articles);
-		return "articleCategory";
-	}
 	
 	@PostMapping("/savePost")
 		public ModelAndView saveArticle(@ModelAttribute Article article) {
@@ -163,22 +159,31 @@ public class WebClientController {
 		model.addAttribute("article", article);
 		return "formUpdateArticle";
 	}
-	@GetMapping("/addComment/{id}")
-	public String createComment(Model model) {
-		Comment comment = new Comment();
-		model.addAttribute("comment", comment);
-		return "formComment";
+	
+	@GetMapping("/deleteUser/{id}")
+	public ModelAndView deleteUser(@PathVariable int id) {
+		userProxy.deleteUser(id);
+		articleProxy.deleteArticleByUser(id);
+		return new ModelAndView("redirect:/home");
+	}
+	@GetMapping("/updateUser/{id}")
+	public String updateUser(@PathVariable int id, Model model) {
+		User user = userProxy.getUser(id);
+		model.addAttribute("user", user);
+		return "formUpdateUser";
 	}
 	
-	
-	@PostMapping("/saveUser")
-		public ModelAndView saveuser(@ModelAttribute User user) {
-			if(user.getId() == null) {
-				userProxy.createUser(user);
-			}
-			else {
-				userProxy.updateUser(user);
-			}
-			return new ModelAndView("redirect:/home");
-		}
+	@GetMapping("/deleteCategory/{id}")
+	public ModelAndView deleteCategory(@PathVariable int id) {
+		categoryProxy.deleteCategory(id);
+		articleProxy.deleteArticleByCategory(id);
+		return new ModelAndView("redirect:/home");
 	}
+	@GetMapping("/updateCategory/{id}")
+	public String updateCategory(@PathVariable int id, Model model) {
+		Category category = categoryProxy.getCategory(id);
+		model.addAttribute("category", category);
+		return "formUpdateCategory";
+	}
+	
+}

@@ -7,6 +7,20 @@ xmlns:th="http://www.thymeleaf.org">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 </head>
 <body>
+	<ul class="nav justify-content-center">
+	  <li class="nav-item">
+	    <a class="nav-link active" aria-current="page" href="/home">Accueil</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" href="/article/new">Nouvel article</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" href="/category/new">Nouvelle catégorie</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" href="/user/new">Nouvel utilisateur</a>
+	  </li>
+	</ul>
 	<div class="container">
   		<div class="row">
   			<p>Ecrit par <span th:text="${article.user.name}"></span> le <span th:text="${article.date}"></span></p>
@@ -19,7 +33,20 @@ xmlns:th="http://www.thymeleaf.org">
 	   		<div class="col-sm">
 	   			<form method="post" th:action="@{/saveComment}" th:object="${newComment}">
 	   			
-		   			<label for="contentInput" class="form-label">Votre commentaire :</label> 
+		   			<select class="form-select" aria-label="User" th:field="*{user_id}">
+					  <option th:each="user : ${users}"
+					  	th:value="${user.id}"
+					  	th:utext="${user.name}">
+				  	</option>
+					</select>
+					
+					<select class="form-select" aria-label="User" th:field="*{on_article_id}" style="visibility: hidden;">
+					  	<option
+					  		th:value="${article.id}"
+				  		</option>
+					</select>
+	   			
+		   			<label for="contentInput" class="form-label">Votre commentaire :</label>
 					<input type="text" th:field="*{content}" id="contentInput" class="form-control"/>
 				
 					<input type="submit" value="Validate" />
