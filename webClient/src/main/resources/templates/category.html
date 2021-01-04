@@ -8,26 +8,12 @@ xmlns:th="http://www.thymeleaf.org">
 </head>
 <body>
 	<div class="container">
-		<div class="row">
-			<h1>Toutes les catégories</h1>
-    		<div th:each="categorie: ${categories}" class="col-sm">
-	    		<a th:href="@{/category/{id}(id=${categorie.id})}">
-	      			<p th:text="${categorie.name}"></p>
-      			</a>
-    		</div> 
-    	</div>
+		<h1 th:text="${category.name}"></h1>
   		<div class="row">
-  			<h1>Tous les articles</h1>
-    		<div th:each="article: ${articles}" class="col-sm">
+    		<div th:each="article: ${article}" class="col-sm">
       			<a th:href="@{/article/{id}(id=${article.id})}">
       				<p th:text="${article.content}"></p>
       			</a>
-    		</div> 
-    	</div>
-    	<div class="row">
-  			<h1>Tous les utilisateurs</h1>
-    		<div th:each="user: ${users}" class="col-sm">
-      			<p th:text="${user.name}"></p>
     		</div> 
     	</div>
     </div>

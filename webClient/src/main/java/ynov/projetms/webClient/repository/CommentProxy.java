@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
 import ynov.projetms.webClient.CustomProperties;
+import ynov.projetms.webClient.model.Article;
 import ynov.projetms.webClient.model.Comment;
 
 @Repository
@@ -47,6 +48,7 @@ public class CommentProxy extends GenericProxy{
 		
 		return response.getBody();
 	}
+	
 	public Comment updateComment(Comment comment) {
 		String updateCommentUrl = props.getApiUrl() + "/comment/" + comment.getId();
 		HttpEntity<Comment> requestEntity = new HttpEntity<Comment>(comment);
@@ -58,6 +60,7 @@ public class CommentProxy extends GenericProxy{
 		
 		return response.getBody();
 	}
+	
 	public void deleteComment(Integer id) {
 		String deleteCommentUrl = props.getApiUrl() + "/comment/" + id;
 		ResponseEntity<Void> response = restTemplate.exchange(
@@ -66,6 +69,15 @@ public class CommentProxy extends GenericProxy{
 				null, 
 				Void.class);
 		System.out.println(response.getStatusCode().toString());
-		
+	}
+	
+	public Iterable<Comment> getCommentByArticle(int id){
+		String getCommentUrl = props.getApiUrl() + "/comment/article/" + id;
+		ResponseEntity<Iterable<Comment>> response = restTemplate.exchange(
+				getCommentUrl, 
+				HttpMethod.GET, 
+				null, 
+				new ParameterizedTypeReference<Iterable<Comment>>() {});
+		return response.getBody();
 	}
 }

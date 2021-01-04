@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import ynov.projetms.article.model.Article;
-import ynov.projetms.article.model.Category;
 import ynov.projetms.article.model.Comment;
 import ynov.projetms.article.model.User;
 import ynov.projetms.article.repositories.CommentProxy;

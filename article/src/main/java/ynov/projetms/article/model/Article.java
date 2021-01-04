@@ -29,8 +29,7 @@ public class Article {
 	@Column(name="content")
 	private String content;
 	
-	@JoinColumn(name = "id_category", referencedColumnName = "id_category", nullable = false)
-	@NotNull
+	@Column(name="id_category")
 	private Integer id_category;
 	
 	@Column(name="id_user")

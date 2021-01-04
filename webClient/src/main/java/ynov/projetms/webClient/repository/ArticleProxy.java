@@ -26,6 +26,7 @@ public class ArticleProxy extends GenericProxy {
 			return response.getBody();
 	}
 	
+	
 	public Iterable<Article> getArticles(){
 		String getArticleUrl = props.getApiUrl() + "/article";
 		ResponseEntity<Iterable<Article>> response = restTemplate.exchange(
@@ -71,7 +72,7 @@ public class ArticleProxy extends GenericProxy {
 	}
 	
 	public Iterable<Article> getArticleByCategorie(int id){
-		String getArticleUrl = props.getApiUrl() + "/article/category" + id;
+		String getArticleUrl = props.getApiUrl() + "/article/category/" + id;
 		ResponseEntity<Iterable<Article>> response = restTemplate.exchange(
 				getArticleUrl, 
 				HttpMethod.GET, 
@@ -80,4 +81,3 @@ public class ArticleProxy extends GenericProxy {
 		return response.getBody();
 	}
 }
-

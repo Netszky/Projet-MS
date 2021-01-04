@@ -18,6 +18,8 @@ public class GatewayConfig {
 						.uri("lb://articleapi"))
 				.route(r -> r.path("/comment/**")
 						.uri("lb://commentapi"))
+				.route(r -> r.path("/category/**")
+                        .uri("lb://articleapi"))
 				.build();
 	}
 	

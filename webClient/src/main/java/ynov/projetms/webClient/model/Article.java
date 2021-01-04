@@ -10,7 +10,7 @@ public class Article {
 	
 	private String content;
 	
-	private String category;
+	private Integer id_category;
 	
 	private User user;
 	
@@ -47,12 +47,12 @@ public class Article {
 		this.content = content;
 	}
 
-	public String getCategory() {
-		return category;
+	public Integer getCategory() {
+		return id_category;
 	}
 
-	public void setCategory(String category) {
-		this.category = category;
+	public void setCategory(Integer id_category) {
+		this.id_category = id_category;
 	}	
 	
 }
