@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3org/1999/xhml"
+	xmlns:th="http://www.thymeleaf.org" lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Publish a new article</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="/assets/css/main.css" />
+	</head>
+
+	<body class="single is-preload">
+
+		<div id="wrapper">
+
+			<header id="header">
+				<h1><a href="@{/categoryList}">Super blog</a></h1>
+				<nav class="links">
+					<ul>
+						<li><a href="/home">Most recent posts</a></li>
+						<li><a href="/user">User list</a></li>
+						<li><a href="/category">Available categories</a></li>
+					</ul>
+				</nav>
+			</header>
+
+			<div class="main container">
+				<form method="post" th:action="@{/savePost}" th:object="${article}">
+					<input type="hidden" th:field="*{id}"/>
+					<select class="form-select" aria-label="Category" th:field="*{id_category}">
+					  <option th:each="category : ${categories}"
+					  	th:value="${category.id}"
+					  	th:utext="${category.name}">
+				  	</option>
+					</select>
+					<select class="form-select" aria-label="User" th:field="*{id_user}">
+					  <option th:each="user : ${users}"
+					  	th:value="${user.id}"
+					  	th:utext="${user.name}">
+					  	</option>
+					</select>
+					<label for="titleInput" class="form-label">Title</label>
+					<input type="text" th:field="*{title}" id="titleInput" class="form-control"/>
+					<label for="contentInput" class="form-label">Content</label>
+					<input type="text" th:field="*{content}" id="contentInput" class="form-control"/>
+					<input type="submit" value="Submit" />
+				</form>
+			</div>
+
+			<section id="footer">
+				<ul class="icons">
+					<li><a target="_blank" href="https://github.com/Netszky/Projet-MS" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+				</ul>
+				<p class="copyright">&copy; Super team. Design by <a href="http://html5up.net">HTML5 UP</a>.</p>
+			</section>
+
+		</div>
+
+		<script src="/assets/js/jquery.min.js"></script>
+		<script src="/assets/js/browser.min.js"></script>
+		<script src="/assets/js/breakpoints.min.js"></script>
+		<script src="/assets/js/util.js"></script>
+		<script src="/assets/js/main.js"></script>
+
+	</body>
+</html>

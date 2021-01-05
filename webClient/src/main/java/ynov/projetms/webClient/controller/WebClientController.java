@@ -162,6 +162,10 @@ public class WebClientController {
 	}
 	@GetMapping("/updateArticle/{id}")
 	public String updateArticle(@PathVariable int id, Model model) {
+		Iterable<Category> categories = categoryProxy.getCategories();
+		model.addAttribute("categories", categories);
+		Iterable<User> users = userProxy.getUsers();
+		model.addAttribute("users", users);
 		Article article = articleProxy.getArticle(id);
 		model.addAttribute("article", article);
 		return "formUpdateArticle";
